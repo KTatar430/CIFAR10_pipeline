@@ -1,0 +1,23 @@
+# Ignore data downloads and cached datasets
+/dataset/
+
+# Model checkpoints
+*.pth
+
+# Python virtual environments
+venv/
+.env
+
+# Bytecode
+__pycache__/
+*.py[cod]
+
+# Jupyter notebooks checkpoints
+.ipynb_checkpoints/
+
+# Logs and miscellaneous
+*.log
+
+# IDE/editor config
+.vscode/
+.idea/
