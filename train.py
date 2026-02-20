@@ -5,11 +5,21 @@
 import torch
 import torch.nn as nn
 import time
+import random
+import numpy as np
 
 from data.dataset import get_dataloaders
 from model.cnn import SimpleCNN
 
 def train():
+
+    # reproducibility
+    seed = 40
+    torch.manual_seed(seed)
+    np.random.seed(seed)
+    random.seed(seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(seed)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")   # Use GPU if available
     best_val_loss = float("inf")

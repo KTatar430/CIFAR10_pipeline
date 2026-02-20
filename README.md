@@ -2,6 +2,16 @@
 
 This Python project trains a convolutional neural network on the [CIFAR-10](https://www.cs.toronto.edu/~kriz/cifar.html) dataset using PyTorch.
 
+Key design decisions:
+
+* **Data augmentation only on training set** – random crops and horizontal flips help generalization; validation and test sets remain unaltered to measure true model performance.
+* **Fixed random seed** (42) ensures reproducible splits and training results across runs.
+* **Simple, shallow CNN** chosen for clarity; three convolutional layers followed by two fully connected layers.
+* **Single-entry point** (`main.py`) enables one‑line execution of the full pipeline while individual scripts support targeted runs.
+* **Device-agnostic code** automatically uses CUDA if available, otherwise falls back to CPU.
+
+
+
 ---
 
 ## Repository Structure

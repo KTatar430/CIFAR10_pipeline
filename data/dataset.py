@@ -9,6 +9,8 @@ import torchvision.transforms as transforms
 def get_dataloaders(batch_size=32):
 
     # Separate transforms for training (with augmentation) and test/validation (no augmentation)
+    # Augmenting training data with random cropping and horizontal flipping to improve generalization
+    # Validation and test data are only normalized without augmentation to evaluate true performance of the model
     train_transform = transforms.Compose([
         transforms.RandomCrop(32, padding=4),                                   # Random crop with padding (32x32 images)
         transforms.RandomHorizontalFlip(),                                      # 50% chance of horizontal flip
@@ -31,7 +33,9 @@ def get_dataloaders(batch_size=32):
     train_size = int(0.8 * len(full_trainset))
     val_size = len(full_trainset) - train_size
 
-    trainset, valset = torch.utils.data.random_split(full_trainset, [train_size, val_size])
+    # use fixed seed for reproducible split
+    generator = torch.Generator().manual_seed(42)
+    trainset, valset = torch.utils.data.random_split(full_trainset, [train_size, val_size], generator=generator)
 
 
     # Augment train and validation sets with the appropriate transforms (train gets augmentation, val gets no augmentation)
