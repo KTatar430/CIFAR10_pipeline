@@ -4,7 +4,7 @@ This Python project trains a convolutional neural network on the [CIFAR-10](http
 
 ---
 
-##  Repository Structure
+## Repository Structure
 
 ```
 CIFAR10_pipeline/
@@ -59,7 +59,7 @@ Both scripts will look for `best_model.pth` in the project root and `./dataset` 
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 The required packages are listed in `requirements.txt`:
 
