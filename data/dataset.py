@@ -46,7 +46,7 @@ def get_dataloaders(batch_size=32):
     trainset = torch.utils.data.Subset(train_dataset, trainset.indices)
     valset = torch.utils.data.Subset(val_dataset, valset.indices)
 
-
+    # Create data loaders for training, validation, and testing with the specified batch size
     trainloader = torch.utils.data.DataLoader(trainset, batch_size=batch_size, shuffle=True)
     valloader = torch.utils.data.DataLoader(valset, batch_size=batch_size, shuffle=False)
     testloader = torch.utils.data.DataLoader(test_dataset, batch_size=batch_size, shuffle=False)

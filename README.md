@@ -10,7 +10,11 @@ Key design decisions:
 * **Single-entry point** (`main.py`) enables one‑line execution of the full pipeline while individual scripts support targeted runs.
 * **Device-agnostic code** automatically uses CUDA if available, otherwise falls back to CPU.
 
+Data augmentation:
+Data augmentation is applied during training to artificially increase the diversity of the dataset. Random cropping and horizontal flipping should help the model generalize, reduce overfitting and improving performance on unseen test data.
 
+Results:
+Model achieves over 70% accuracy on the CIFAR-10 test set. Considering the simplicity of the CNN architecture and the fact that it was trained from scratch, this performance is reasonable. 
 
 ---
 
