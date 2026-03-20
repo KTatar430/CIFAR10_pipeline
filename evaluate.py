@@ -20,8 +20,7 @@ def evaluate():
     _, _, testloader, classes = get_dataloaders(batch_size)
 
     model = SimpleCNN().to(device)
-    model.load_state_dict(torch.load("best_model.pth",
-                                     map_location=device))
+    model.load_state_dict(torch.load("best_model.pth", map_location=device))
 
     loss_fn = nn.CrossEntropyLoss()
 
@@ -31,8 +30,8 @@ def evaluate():
     total = 0
     test_loss = 0.0
 
-    all_preds = []
-    all_labels = []
+    all_preds = []      # List to store all predicted labels for the test set (for confusion matrix)
+    all_labels = []     # List to store all true labels for the test set (for confusion matrix)
 
     with torch.no_grad():
         for images, labels in testloader:
@@ -45,7 +44,7 @@ def evaluate():
 
             test_loss += loss.item()
 
-            _, predicted = torch.max(outputs, 1)
+            _, predicted = torch.max(outputs, 1)    # Get predicted class by taking the index with highest probability
 
             total += labels.size(0)
             correct += (predicted == labels).sum().item()

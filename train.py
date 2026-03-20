@@ -54,10 +54,10 @@ def train():
             images = images.to(device)
             labels = labels.to(device)
 
-            optimizer.zero_grad()
-            outputs = model(images)
-            loss = loss_fn(outputs, labels)
-            loss.backward()
+            optimizer.zero_grad()               # Clear gradients from previous step
+            outputs = model(images)             # Forward pass to get predictions
+            loss = loss_fn(outputs, labels)     # Compute loss between predictions and true labels
+            loss.backward()                     # Backward pass to compute gradients
             optimizer.step()
 
             running_loss += loss.item()
